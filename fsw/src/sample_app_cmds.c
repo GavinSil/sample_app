@@ -49,6 +49,16 @@ CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg)
     int i;
 
     /*
+    ** 步进节奏观测：每次 HK 请求时递增 tick 计数器并输出 EVS 日志
+    ** 在 CFE_SIM_STEPPING=1 模式下，日志密度直观反映外部控制器的步进速率
+    */
+    SAMPLE_APP_Data.HkTickCounter++;
+    CFE_EVS_SendEvent(SAMPLE_APP_HK_TICK_INF_EID, CFE_EVS_EventType_INFORMATION,
+                      "SAMPLE: HK Tick #%lu CmdCnt=%u ErrCnt=%u",
+                      (unsigned long)SAMPLE_APP_Data.HkTickCounter,
+                      SAMPLE_APP_Data.CmdCounter, SAMPLE_APP_Data.ErrCounter);
+
+    /*
     ** Get command execution counters...
     */
     SAMPLE_APP_Data.HkTlm.Payload.CommandErrorCounter = SAMPLE_APP_Data.ErrCounter;

@@ -52,6 +52,7 @@ typedef struct
     */
     uint8 CmdCounter;
     uint8 ErrCounter;
+    uint32 HkTickCounter; /**< @brief HK 周期性 tick 计数器，每次 SCH 调度递增，用于步进节奏观测 */
 
     /*
     ** Housekeeping telemetry packet...

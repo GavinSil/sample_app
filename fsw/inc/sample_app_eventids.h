@@ -38,5 +38,7 @@
 #define SAMPLE_APP_SUB_HK_ERR_EID    10
 #define SAMPLE_APP_SUB_CMD_ERR_EID   11
 #define SAMPLE_APP_TABLE_REG_ERR_EID 12
+/** @brief HK 周期性 tick 日志事件 ID，用于步进节奏观测 */
+#define SAMPLE_APP_HK_TICK_INF_EID   13
 
 #endif /* SAMPLE_APP_EVENTS_H */
